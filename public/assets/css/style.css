@@ -1,0 +1,18 @@
+body {
+	background-color: gold;
+}
+
+img {
+	max-height: 100px;
+	margin-left: 35%;
+}
+
+h2 {
+	color: red;
+	text-align: center;
+}
+
+form {
+	text-align: center;
+}
+

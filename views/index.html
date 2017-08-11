@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Eat Da Burger</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <!-- Moment.js -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.16.0/moment.min.js"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Shrikhand" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="../public/assets/css/style.css">
+
+  </head>
+  <body>
+
+    <div class="container">
+
+    	<div class = "row">
+    		<div class="col-xs-4"></div>
+    		<div class="col-xs-4">
+    			<img src = "../public/assets/images/burger.png">
+    		</div>
+    		<div class="col-xs-4"></div>
+    	</div><!--row-->
+
+    	<div class = "row">
+    		<div class="col-xs-4">
+    				<div id = "false" class="col-xs-4">
+		                <ul>
+		                 <!-- {{#each burger}}
+		                    {{#unless this.devoured}}-->
+		                      <li>
+		                        <!--{{this.burger_name}}-->
+
+		                        <form action="/{{this.id}}?_method=PUT" method="POST">
+		                          <textarea type="hidden" name="devoured" value="false"></textarea>
+		                          <button type="submit">Devour It!</button>
+		                        </form>
+
+		                       <!-- {{> cats/delete-cat}}-->
+		                      </li>
+		                   <!-- {{/unless}}
+		                  {{/each}}-->
+		                </ul>  
+		              </div>
+    		</div>
+    		<div class="col-xs-4">
+    			<h2>EAT-DA-BURGER!</h2>
+    		</div>
+    		<div class="col-xs-4"></div>
+    	</div><!--row-->
+
+    	<div class = "row">
+    		<div class="col-xs-4"></div>
+    		<div class="col-xs-4">
+    			<form action="/_method=PUT" method="POST">
+				  <textarea name="burger_name"></textarea><br><br>
+				  <button class = "btn btn-primary" id ="submit" type="submit">submit</button><br><br>
+				  <p>Enter the name of the burger you want?</p>
+				</form>
+    		</div>
+    		<div class="col-xs-4"></div>
+    	</div><!--row-->
+		
+	</div> <!--closes container-->
+
+<script type="text/javascript" src="../controllers/burger_controller.js">
+</script>
+
+</body>
+</html>
