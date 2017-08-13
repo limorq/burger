@@ -1,4 +1,5 @@
 var connection = require("./connection.js");
+var moment = require("moment");
 
 var orm = {
   all: function(table, cb) {
@@ -7,28 +8,28 @@ var orm = {
       if (err) {
         throw err;
       }
-      console.log(result);
+      
       cb(result);
     });
   },
-  insertOne: function(table, burger, date, cb) {
-    var queryString = "INSERT INTO burgers (burger_name, devoured, date) VALUES (?, ?, ?)";
-
-    connection.query(queryString, 
-      (burger, false, date), 
+  insertOne: function(table, data, cb) {
+    var time = moment().format("YYYYMMDDhhmmss");
+    var queryString = "INSERT INTO burger (burger_name, devoured, timeOf) VALUES (?, false, ?)";
+    
+    connection.query(queryString,
+      [data, time], 
       function(err, result) {
-      console.log(result);
       cb(result);
     });
   },
-  updateOne: function(table, burger, cb) {
+  updateOne: function(table, data, cb) {
     var queryString = "UPDATE burger SET ? WHERE ?";
 
     connection.query(queryString, 
         {devoured:true},
-        {burger_name:burger}, 
+        {burger_name:data}, 
         function(err, result) {
-      console.log(result);
+      
       cb(result);
     });
   }

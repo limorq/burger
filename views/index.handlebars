@@ -1,26 +1,15 @@
     <div class="container">
-
+        <div class = "col-xs-4"></div>
     	<div class = "row">
     		<div class="col-xs-4"></div>
     		<div class="col-xs-4">
-    			<img src = "../public/assets/images/burger.png">
+    			<img src = "/assets/images/burger.png">
     		</div>
     		<div class="col-xs-4"></div>
     	</div><!--row-->
 
     	<div class = "row">
-    		<div id = "false" class="col-xs-4">
-                <ul>
-                  {{#each hbsObject}}
-                    {{#unless hbsObject.devoured}}
-                      <li>
-                        {{hbsObject.burger_name}}
-                          <button id = "devour" type="submit">Devour It!</button>
-                      </li>
-                    {{/unless}}
-                  {{/each}}
-                </ul>      
-            </div>
+    		
     		<div class="col-xs-4">
     			<h2>EAT-DA-BURGER!</h2>
     		</div>
@@ -28,9 +17,21 @@
     	</div><!--row-->
 
     	<div class = "row">
-    		<div class="col-xs-4"></div>
+    		<div id = "false" class="col-xs-4">
+
+                <ul>
+                  {{#each burger}}
+                    
+                      <li>
+                        <p>{{burger}}</p>
+                         <button id = "devour" type="submit">Devour It!</button>
+                      </li>
+                    
+                  {{/each}}
+                </ul>      
+            </div>
     		<div class="col-xs-4">
-    			<form action="/_method=PUT" method="POST">
+    			<form action="/?_method=PUT" method="POST">
 				  <textarea name="burger_name"></textarea><br><br>
 				  <button class = "btn btn-primary" id ="submit" type="submit">submit</button><br><br>
 				  <p>Enter the name of the burger you want?</p>
@@ -41,5 +42,5 @@
 		
 	</div> <!--closes container-->
 
-<script type="text/javascript" src="../controllers/burger_controller.js">
-</script>
+
+
