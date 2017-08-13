@@ -15,16 +15,15 @@ router.get("/", function(req, res) {
 
 router.post("/", function(req, res) {
   burg.insertOne("burger", req.body.burger_name, function() {
-    console.log(req.body.burger_name);
     res.redirect("/");
   });
 });
 
 router.put("/:id", function(req, res) {
   var id = req.params.id;
-
+console.log(id);
   burg.updateOne(id, function() {
-    res.redirect("/");
+    res.render("index", hbsObject);
   });
 });
 

@@ -1,7 +1,7 @@
     <div class="container">
-        <div class = "col-xs-4"></div>
     	<div class = "row">
     		<div class="col-xs-4"></div>
+
     		<div class="col-xs-4">
     			<img src = "/assets/images/burger.png">
     		</div>
@@ -9,27 +9,33 @@
     	</div><!--row-->
 
     	<div class = "row">
-    		
+            <div class = "col-xs-4"></div>   		
     		<div class="col-xs-4">
     			<h2>EAT-DA-BURGER!</h2>
     		</div>
-    		<div id = "true" class="col-xs-4"></div>
+    		<div class="col-xs-4"></div>
     	</div><!--row-->
 
     	<div class = "row">
     		<div id = "false" class="col-xs-4">
-
-                <ul>
-                  {{#each burger}}
-                    
-                      <li>
-                        <p>{{burger}}</p>
-                         <button id = "devour" type="submit">Devour It!</button>
-                      </li>
-                    
-                  {{/each}}
-                </ul>      
+                    <!--this will list each uneaten burger-->
+                    <ol>
+                      {{#each burger}}
+                        {{#unless devoured}}
+                        <div class = "well">
+                          <li>
+                            <p>{{burger_name}}</p>
+                            <form action="/?_method=PUT" method="PUT">
+                             <button class = "btn btn-primary" id = "devour" type="submit">Devour It!</button>
+                             </form>
+                          </li>
+                        </div>
+                        {{/unless}}
+                      {{/each}}
+                    </ol>               
             </div>
+
+            <!--the input form-->
     		<div class="col-xs-4">
     			<form action="/?_method=PUT" method="POST">
 				  <textarea name="burger_name"></textarea><br><br>
@@ -37,10 +43,28 @@
 				  <p>Enter the name of the burger you want?</p>
 				</form>
     		</div>
-    		<div class="col-xs-4"></div>
+
+            <!--this will list each eaten(devoured) burger-->
+    		<div class="col-xs-4">
+                <ol>
+                    <div class = "well" id = "true">
+                        
+                    </div>                
+                </ol>      
+            </div>
+
     	</div><!--row-->
 		
 	</div> <!--closes container-->
 
+<script>
+    $("#devour").on("click", function() {
+      event.preventDefault();
+      var pointer = "$('#true')";
+      var html = "<li>";
+      html+="test"
+      html+="</li>";
+    });
 
+</script>
 

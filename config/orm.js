@@ -27,9 +27,9 @@ var orm = {
 
     connection.query(queryString, 
         {devoured:true},
-        {burger_name:data}, 
+        {id:data}, 
         function(err, result) {
-      
+        console.log(result);    
       cb(result);
     });
   }
