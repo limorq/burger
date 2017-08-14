@@ -15,7 +15,6 @@ var orm = {
   insertOne: function(table, data, cb) {
     var time = moment().format("YYYYMMDDhhmmss");
     var queryString = "INSERT INTO burger (burger_name, devoured, timeOf) VALUES (?, false, ?)";
-    
     connection.query(queryString,
       [data, time], 
       function(err, result) {
@@ -23,14 +22,12 @@ var orm = {
     });
   },
   updateOne: function(table, data, cb) {
-    var queryString = "UPDATE burger SET ? WHERE ?";
-
+    var queryString = "UPDATE burger SET devoured = ? WHERE id = ?";
     connection.query(queryString, 
-        {devoured:true},
-        {id:data}, 
-        function(err, result) {
-        console.log(result);    
-      cb(result);
+        [true, data], 
+        function(err, result) {  
+          if (err) console.log(err);
+          cb(result);
     });
   }
 };

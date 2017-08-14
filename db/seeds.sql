@@ -4,7 +4,7 @@ devoured,
 timeOf)
 	VALUES (
 		"double bacon cheeseburger",
-		false,
+		true,
 		20170810122354);
 INSERT INTO burger (
 burger_name, 

@@ -17,7 +17,7 @@
     	</div><!--row-->
 
     	<div class = "row">
-    		<div id = "false" class="col-xs-4">
+    		<div class="col-xs-4">
                     <!--this will list each uneaten burger-->
                     <ol>
                       {{#each burger}}
@@ -25,8 +25,8 @@
                         <div class = "well">
                           <li>
                             <p>{{burger_name}}</p>
-                            <form action="/?_method=PUT" method="PUT">
-                             <button class = "btn btn-primary" id = "devour" type="submit">Devour It!</button>
+                            <form action="/?_method=PUT" method="POST">
+                             <button class = "btn btn-sm btn-warning" name = "id" type="submit" value = {{this.id}}>Devour It!</button>
                              </form>
                           </li>
                         </div>
@@ -37,7 +37,7 @@
 
             <!--the input form-->
     		<div class="col-xs-4">
-    			<form action="/?_method=PUT" method="POST">
+    			<form action="/" method="POST">
 				  <textarea name="burger_name"></textarea><br><br>
 				  <button class = "btn btn-primary" id ="submit" type="submit">submit</button><br><br>
 				  <p>Enter the name of the burger you want?</p>
@@ -47,12 +47,18 @@
             <!--this will list each eaten(devoured) burger-->
     		<div class="col-xs-4">
                 <ol>
-                    <div class = "well" id = "true">
-                        
-                    </div>                
-                </ol>      
-            </div>
-
+                      {{#each burger}}
+                        {{#if devoured}}
+                        <div class = "well">
+                          <li>
+                            <p>{{burger_name}}</p>
+                          </li>
+                        </div>
+                        {{/if}}
+                      {{/each}}
+                </ol>                          
+            </div>                
+                
     	</div><!--row-->
 		
 	</div> <!--closes container-->
@@ -61,9 +67,10 @@
     $("#devour").on("click", function() {
       event.preventDefault();
       var pointer = "$('#true')";
-      var html = "<li>";
-      html+="test"
-      html+="</li>";
+      var html = "<li><div class = 'well'>";
+      html+="{{burger}}"
+      html+="</div></li>";
+      
     });
 
 </script>

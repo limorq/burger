@@ -1,15 +1,12 @@
 var express = require("express");
-
 var router = express.Router();
 var burg = require("../models/burger.js");
-
-
 
 router.get("/", function(req, res) {
   burg.selectAll(function(data) {
   var hbsObject = { burger: data };
   res.render("index", hbsObject);
-});
+  });
 
 });
 
@@ -19,11 +16,10 @@ router.post("/", function(req, res) {
   });
 });
 
-router.put("/:id", function(req, res) {
-  var id = req.params.id;
-console.log(id);
-  burg.updateOne(id, function() {
-    res.render("index", hbsObject);
+router.put("/", function(req, res) {
+  var id = parseInt(req.body.id);
+  burg.updateOne(id, function() {    
+    res.redirect("/");
   });
 });
 
