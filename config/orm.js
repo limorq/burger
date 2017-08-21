@@ -2,13 +2,12 @@ var connection = require("./connection.js");
 var moment = require("moment");
 
 var orm = {
-  all: function(table, cb) {
+  all: function(cb) {
     var queryString = "SELECT * FROM burger";
     connection.query(queryString, function(err, result) {
       if (err) {
         throw err;
-      }
-      
+      }     
       cb(result);
     });
   },
